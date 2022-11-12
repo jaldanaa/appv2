@@ -1,0 +1,85 @@
+<style-links></style-links>
+<div ng-if="!vm.authenticationService.validSession()">
+  <header-component></header-component>
+  <slider></slider>
+  <div class="center">
+    <section id="content">
+        <h1 class="subheader text-dark">Ultimas noticias</h1>
+
+        <div class="post-container" ng-repeat="publicacion in vm.noticiasService.noticias track by $index">
+          <a  ng-click="vm.abrirPublicacion(publicacion.id, publicacion.titulo)" class="text-dark link-title pointer-link">
+            <h1>{{publicacion.titulo}}</h1>
+          </a>
+          <div class="post-info">
+            <span>Por <i class= "fa fa-user"></i> <span class="username">{{publicacion.autor.username}}</span> <i class= "fa fa-clock"></i> {{publicacion.fecha_hora_creacion | date:'medium'}} </span>
+          </div>
+          <br>
+          <div class="post-content">
+            <div class="image-container" ng-if="publicacion.imagen">
+              <img src="{{publicacion.imagen}}" alt="{{publicacion.titulo}}">
+            </div>
+            <div class="text-link-container">
+              <div class="text-container">
+                <p>{{ publicacion.contenido | limitTo: 250 }}{{publicacion.contenido.length > 250 ? '...' : ''}}</p>
+              </div>
+              <a class="pointer-link" ng-click="vm.abrirPublicacion(publicacion.id, publicacion.titulo)"> Haz click aqui para leer más <i class="fa fa-angle-double-right"></i> </a>
+            </div>
+          </div>
+        </div>
+
+    </section>
+    <sidebar on-search-news="vm.buscarNoticias" criterio-busqueda="vm.criterioBusqueda"></sidebar>
+  </div>
+  <footer-component></footer-component>
+</div>
+
+<div ng-if="vm.authenticationService.validSession()">
+  <sidebar content="'noticias'" on-search-news="vm.buscarNoticias" criterio-busqueda="vm.criterioBusqueda"></sidebar>
+  <div id="right-panel" class="right-panel">
+    <header-component></header-component>
+    <div class="content pb-0">
+      <div class="row">
+        <div class="card w-100">
+          <div class="card-footer">
+            <strong class="card-title mb-3"
+              >{{vm.noticiasService.tituloNoticias}}</strong
+            >
+          </div>
+        </div>
+        <div
+          class="card admin-card"
+          ng-repeat="p in vm.noticiasService.noticias track by $index"
+        >
+          <img
+            class="card-img-top"
+            src="{{p.imagen}}"
+            alt="Card image cap"
+            ng-if="p.imagen"
+          />
+          <div class="card-body">
+            <h4 class="card-title mb-3">
+              {{p.titulo}}
+              <strong
+                ng-if="vm.noticiasService.tituloNoticias === 'Publicaciones Recientes'"
+                >| {{p.clasificacion.nombre}}</strong
+              >
+            </h4>
+            <p class="card-text">
+              {{p.contenido}}
+            </p>
+          </div>
+          <div class="card-footer pb-0">
+            <div ng-if="vm.authenticationService.validSession()" class="float-left">
+              <button type="button" class="btn btn-primary" ng-click="vm.editarNoticia(p.id)"><i class="fa fa-pencil"></i>&nbsp; Editar</button>
+              <button type="button" class="btn btn-primary" ng-click="vm.eliminarNoticia(p.id)"><i class="fa fa-trash-o"></i>&nbsp; Eliminar</button>
+              <button type="button" class="btn btn-primary" ng-click="vm.abrirPublicacion(p.id, p.titulo)"><i class="fa fa-eye"></i>&nbsp; Vista Previa</button>
+            </div>
+            <strong class="card-title mb-3 float-right"
+              >{{p.autor.first_name}} {{p.autor.last_name}} |
+              {{p.fecha_hora_creacion | date:'medium'}}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

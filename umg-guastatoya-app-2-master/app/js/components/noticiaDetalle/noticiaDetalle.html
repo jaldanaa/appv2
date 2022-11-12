@@ -1,0 +1,21 @@
+<!-- Este componente sera visualizado por usuarios autenticados y no autenticados, por lo que se incluyen los estilos de la pagina publica por defecto -->
+<link rel="stylesheet" href="css/public/styles.css">
+<link rel="stylesheet" href="css/public/util.css">
+<link rel="stylesheet" href="css/public/myStyles.css">
+<header-component noticia-detalle="true"></header-component>
+<div class="center">
+  <section id="content">
+    <div class="publicacion">
+        <h2 class="subheader post-title">{{vm.noticia.titulo}}</h2>
+        <div class="post-info">
+          <p><i class= "fa fa-user"></i> {{vm.noticia.autor.username}} <i class= "fa fa-clock"></i> {{vm.noticia.fecha_hora_creacion | date:'medium'}} </p>
+          <p>{{vm.noticia.contenido}}</p>
+        </div>
+        <img src={{vm.noticia.imagen}} width="75%" height="75%" ng-if="vm.noticia.imagen">
+        <br>
+        <br>
+    </div>
+  </section>
+  <sidebar hide-sidebar="true"></sidebar>
+</div>
+<footer-component></footer-component>

@@ -1,0 +1,105 @@
+<style-links></style-links>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row flex-container-center">
+      <div class="card form-content">
+        <div class="card-header"><strong>Crear</strong> Noticia</div>
+        <div class="card-body card-block">
+          <form
+            class="form-horizontal"
+            novalidate
+            name="vm.noticiaForm"
+          >
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="text-input" class="form-control-label"
+                  >Titulo</label
+                >
+              </div>
+              <div class="col-12 col-md-9">
+                <input
+                  type="text"
+                  id="text-input"
+                  name="titulo"
+                  placeholder="Titulo de la noticia"
+                  class="form-control"
+                  ng-model="vm.noticiaModel.titulo"
+                  required
+                />
+                <small class="form-text text-danger" ng-if="vm.noticiaForm.titulo.$invalid">*Ingrese el titulo</small>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="textarea-input" class="form-control-label"
+                  >Conenido</label
+                >
+              </div>
+              <div class="col-12 col-md-9">
+                <textarea
+                  name="contenido"
+                  id="textarea-input"
+                  rows="9"
+                  placeholder="Contentido..."
+                  class="form-control"
+                  ng-model="vm.noticiaModel.contenido"
+                  required
+                ></textarea>
+                <small class="form-text text-danger" ng-if="vm.noticiaForm.contenido.$invalid">*Ingrese el contenido</small>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="select" class="form-control-label">Categoria</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <select
+                  name="categoria"
+                  id="select"
+                  class="form-control"
+                  ng-model="vm.noticiaModel.clasificacion"
+                  required
+                  >
+                  <option value="{{c.id}}" ng-repeat="c in vm.noticiasService.clasificaciones track by $index">{{c.nombre}}</option>
+                </select>
+                <small class="form-text text-danger" ng-if="vm.noticiaForm.categoria.$invalid">*Ingrese el categoria</small>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label
+                  for="file-input"
+                  class="form-control-label"
+                  ng-model="vm.noticiaModel.imagen"
+                  >Imagen</label
+                >
+              </div>
+              <div class="col-12 col-md-9">
+                <input
+                  type="file"
+                  file="file"
+                  id="file-input"
+                  name="file-input"
+                  class="form-control-file"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            ng-click="vm.guardarNoticia()"
+          >
+            <i class="fa fa-dot-circle-o"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <img class="card-img-top" src="{{vm.noticia.imagen}}" alt="Imagen" ng-if="vm.noticia.imagen">
+    </div>
+  </div>
+</div>

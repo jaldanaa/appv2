@@ -1,0 +1,83 @@
+<aside id="sidebar" ng-if="!vm.authenticationService.validSession() && !vm.hideSidebar">
+  <div
+    id="nav-blog"
+    class="sidebar-item"
+    ng-if="vm.authenticationService.validSession()"
+  >
+    <h3>Puedes hacer esto</h3>
+    <a ui-sref="noticia({})" class="btn btn-success">Crear artículo</a>
+  </div>
+
+  <div id="search" class="sidebar-item">
+    <h3>Buscador</h3>
+    <p>Encuentra el artículo que buscas</p>
+    <form>
+      <input type="text" name="search" ng-model="vm.criterioBusqueda" />
+      <input
+        type="button"
+        name="btnSearch"
+        value="Buscar"
+        class="btn"
+        ng-click="vm.onSearchNews()"
+      />
+    </form>
+  </div>
+</aside>
+
+<div class="clearfix" ng-if="!vm.authenticationService.validSession() || vm.hideSidebar"></div>
+
+<aside
+  id="left-panel"
+  class="left-panel"
+  ng-if="vm.authenticationService.validSession()"
+>
+  <nav class="navbar navbar-expand-sm navbar-default">
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav" ng-if="vm.content === 'noticias'">
+        <li>
+          <div class="form-group mt-3">
+            <input
+              type="text"
+              placeholder="Buscar noticia"
+              class="form-control"
+              ng-model="vm.criterioBusqueda"
+            />
+            <button id="" type="button" class="btn btn-sm btn-info btn-block" ng-click="vm.onSearchNews()">
+              <i class="fa fa-search fa-sm"></i>&nbsp;
+              <span>Buscar</span>
+            </button>
+          </div>
+        </li>
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="noticia({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar noticia
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" ng-if="vm.content === 'evaluaciones'">
+        <li>
+          <a ui-sref="evaluacion({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar evaluacion
+          </a>
+        </li>
+        <li class="menu-title">Evaluaciones</li>
+        <li>
+          <a ui-sref="evaluacionesResueltas({})" ui-sref-active="cls_active">
+            Evaluaciones resueltas
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" ng-if="vm.content === 'usuarios'">
+        <li>
+          <a ui-sref="usuario({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar usuario
+          </a>
+        </li>
+        <li class="menu-title">Usuarios</li>
+      </ul>
+    </div>
+  </nav>
+</aside>

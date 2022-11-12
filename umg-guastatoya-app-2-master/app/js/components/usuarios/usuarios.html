@@ -1,0 +1,57 @@
+<style-links></style-links>
+<sidebar content="'usuarios'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header">
+          <strong class="card-title">Usuarios</strong>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre de usuario</th>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Tipo de usuario</th>
+                <th scope="col">Ultimo inicio de sesion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="usuario in vm.usuarios track by $index">
+                <th scope="row">{{usuario.id}}</th>
+                <td>{{usuario.username}}</td>
+                <td>{{usuario.first_name}} {{usuario.last_name}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{vm.usuariosService.getUserType(usuario.profile.tipo)}}</td>
+                <td>{{usuario.last_login | date:'medium'}}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-lg btn-warning btn-sm"
+                    ng-click="vm.editarUsuario(usuario.id)"
+                  >
+                    <i class="fa fa-pencil fa-lg"></i>&nbsp;
+                    <span>Editar</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-lg btn-info btn-sm"
+                    ng-click="vm.eliminarUsuario(usuario.id)"
+                  >
+                    <i class="fa fa-trash-o fa-lg"></i>&nbsp;
+                    <span>Eliminar</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

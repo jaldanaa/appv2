@@ -1,0 +1,91 @@
+$light-color: #f8f9fa;
+$primary-color: #007bff;
+$completed-color: #4de96f;
+$mobile-width: 640px;
+$xsm-width: 380px;
+
+// Overriding styles 
+
+.form-control {
+    border-radius: 0rem;
+}
+
+.btn {
+    border-radius: 0rem;;
+}
+
+.input-group-text {
+    border-radius: 0rem ;
+}
+
+body {
+    background-color: #eff3f7;
+}
+
+.step-block {
+    border-style: solid;
+    border-color: $primary-color;
+    border-width: 0.1rem;
+    height: 3rem;
+    min-width: 5rem;
+    font-size: 0.9rem;
+    
+    @media (max-width: #{$mobile-width}) {
+        font-size: 0.6rem;
+        padding: 0 !important;
+    }
+    @media (max-width: #{$xsm-width}) {
+        min-width: 4rem;
+    }
+}
+
+.step-title {
+    p {
+        margin: 0.5rem 0 0.5rem 1rem;
+        color: $light-color;
+        font-weight: bold;
+    }
+}
+
+.form-step {
+    background-color: #ffffff;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.step-indicator {
+    margin-top: 0.2rem;
+    height: 0.3rem;
+    width: 100%;
+    background-color: $primary-color;
+}
+
+.no-confirm-container {
+    margin-top: 1.5rem;
+    @media (max-width: #{299px}) {
+        margin-top: 3rem;
+    }
+}
+
+.container {
+    @media (max-width: #{$mobile-width}) {
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+    }
+}
+
+.modal-content {
+    border: 0;
+}
+
+.progress {
+    border-radius: 0;
+}
+
+#customAmount {
+    @media (max-width: #{575px}) {
+        margin-top: -0.5rem;
+    }
+}

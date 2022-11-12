@@ -1,0 +1,60 @@
+<header
+  id="header"
+  class="sticky-header"
+  ng-if="!vm.authenticationService.validSession() || vm.noticiaDetalle"
+>
+  <div class="center">
+    <!-- LOGO -->
+    <div id="logo">
+      <img src="images/umglogo.png" class="app-logo" alt="Logotipo" />
+      <!-- <span id="brand">
+              <strong>Curso</strong>Angular
+          </span>-->
+    </div>
+
+    <!-- MENU -->
+    <nav id="menu">
+      <ul>
+        <li>
+          <!--RouterLink asigna el enlace de las direcciones -->
+          <!--RouterLinkActive asigna el Active del estilo CSS -->
+          <a ui-sref="noticias({})" ui-sref-active="active">INICIO</a>
+        </li>
+        <li ng-if="!vm.authenticationService.validSession()">
+          <a ui-sref="blog({})" ui-sref-active="active">BLOG</a>
+        </li>
+        <li ng-if="!vm.authenticationService.validSession()">
+          <a ui-sref="nosotros({})" ui-sref-active="active">NOSOTROS</a>
+        </li>
+        <li
+          ng-if="!vm.authenticationService.validSession() && vm.content !== 'login'"
+        >
+          <a ui-sref="login({})">INICIO DE SESION</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--LIMPIAR FLOTADOS-->
+    <div class="clearfix"></div>
+  </div>
+</header>
+
+<header
+  id="header"
+  class="header"
+  ng-if="vm.authenticationService.validSession() && !vm.noticiaDetalle"
+>
+  <div class="top-left pt-3">
+    <div class="navbar-header">
+      <a ui-sref="noticias({})" ui-sref-active="cls_active"
+        >UNIVERSIDAD DE GUASTATOYA</a
+      >
+    </div>
+  </div>
+  <div class="top-right">
+    <div class="header-menu mt-1">
+      <a class="nav-link" ui-sref="usuarios({})" ui-sref-active="active" ng-if="vm.authenticationService.getCurrentUserType() === 1"><i class="fa fa-user"></i> Administrar Usuarios</a>
+      <a class="nav-link pointer-link" ng-click="vm.authenticationService.logout()"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
+    </div>
+  </div>
+</header>

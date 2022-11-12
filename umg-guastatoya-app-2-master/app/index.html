@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>UMG Guastatoya</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/uiblock/angular-block-ui.min.css"/>
+  <link rel="stylesheet" href="lib/fontawesome/css/all.css">
+  <link rel="stylesheet" href="css/admin/lib/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="css/mainStyle.css">
+  
+</head>
+<body ng-app="UniversidadApp">
+
+
+  <div class="main-block-ui hidden-screen" block-ui="mainBlockUI">
+    <ui-view></ui-view>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+
+  <script src="lib/angular/angular.js"></script>
+
+  <!-- <script src="lib/angular-route/angular-route.js"></script> -->
+  <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-animate.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-sanitize.js"></script>
+
+  <script src="lib/uiblock/angular-block-ui.min.js"></script>
+
+  <script src="lib/ui-bootstrap/ui-bootstrap-tpls-3.0.6.min.js"></script>
+
+  <script src="js/app.module.js"></script>
+
+  <!-- Routes -->
+  <script src="js/routes.config.js"></script>
+
+  <!-- Configs -->
+  <script src="js/uiblock.config.js"></script>
+  
+  <!-- Repositories -->
+  <script src="js/factories/noticias.repository.js"></script>
+  <script src="js/factories/authentication.repository.js"></script>
+
+  <script src="js/factories/usuarios.repository.js"></script>
+
+  <!-- Services -->
+  <script src="js/services/validations.service.js"></script>
+  <script src="js/services/noticias.service.js"></script>
+  <script src="js/services/authentication.service.js"></script>
+
+  <script src="js/services/usuarios.service.js"></script>
+
+  <!-- Components -->
+  <script src="js/components/noticias/noticias.controller.js"></script>
+  <script src="js/components/login/login.controller.js"></script>
+  <script src="js/components/sidebar/sidebar.controller.js"></script>
+  <script src="js/components/header/header.controller.js"></script>
+
+  <script src="js/components/noticiaForm/noticiaForm.controller.js"></script>
+
+
+
+
+  <script src="js/components/slider/slider.controller.js"></script>
+  <script src="js/components/footer/footer.controller.js"></script>
+  <script src="js/components/blog/blog.controller.js"></script>
+  <script src="js/components/nosotros/nosotros.controller.js"></script>
+  <script src="js/components/styleLinks/styleLinks.controller.js"></script>
+  <script src="js/components/usuarios/usuarios.controller.js"></script>
+  <script src="js/components/usuarioForm/usuarioForm.controller.js"></script>
+  <script src="js/components/noticiaDetalle/noticiaDetalle.controller.js"></script>
+  <script src="js/components/notFound/notFound.controller.js"></script>
+
+  <!-- Directives -->
+
+  <script src="js/directives/file.directive.js"></script>
+  
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/moment/moment.min.js"></script>
+
+
+</body>
+</html>

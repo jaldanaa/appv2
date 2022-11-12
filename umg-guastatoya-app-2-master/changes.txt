@@ -1,0 +1,12 @@
+Convencion para nombres de archivos:
+
+app.module.js
+validation.service.js
+...
+
+rutas en archivo separado routes.config.js
+
+Acceder a inputs desde el scope con name
+Reestrucurar funciones en servicios
+Cambiar constantes js a constantes angularjs
+Cambiar selects con ng-options en vez de ng-repeat

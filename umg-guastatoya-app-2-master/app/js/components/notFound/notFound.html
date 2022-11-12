@@ -1,0 +1,25 @@
+<style-links></style-links>
+<div ng-if="!vm.authenticationService.validSession()">
+  <header-component></header-component>
+  <div class="center">
+    <section id="content">
+
+        <h1 class="subheader">Pagina no encontrada</h1>
+        <p>La pagina no existe</p>
+
+    </section>
+    <sidebar hide-sidebar="true"></sidebar>
+  </div>
+  <footer-component></footer-component>
+</div>
+
+<div ng-if="vm.authenticationService.validSession()">
+  <!-- <sidebar content="'noticias'" on-search-news="vm.buscarNoticias" criterio-busqueda="vm.criterioBusqueda"></sidebar> -->
+  <div id="right-panel" class="right-panel">
+    <header-component></header-component>
+    <div class="content pb-0">
+        <h1 class="subheader">Pagina no encontrada</h1>
+        <p>La pagina no existe</p>
+    </div>
+  </div>
+</div>

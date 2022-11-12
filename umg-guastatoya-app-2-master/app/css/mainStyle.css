@@ -1,0 +1,8 @@
+/* Oculta la pantalla completa hasta que se cargue un estilo para adminstrador o para pagina publica */
+.hidden-screen {
+    display: none;
+}
+
+.pointer-link {
+    cursor: pointer;
+}

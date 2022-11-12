@@ -1,0 +1,44 @@
+<!-- Estilos para verificar que estilos de deben aplicar dependiendo si esta logueado o esta en la pagina publica -->
+<style-links></style-links>
+<header-component></header-component>
+<div class="center">
+  <section id="content">
+      
+    <!-- <posts-list></posts-list> -->
+    <!-- <div class="publicacion" ng-repeat="publicacion in vm.noticiasService.noticias track by $index">
+        <a href="#" ng-click="vm.abrirNoticia(publicacion.id)" class="text-dark link-title">
+          <h2 class="subheader post-title">{{publicacion.titulo}}</h2>
+        </a>
+        <div class="post-info">
+          <p><i class= "fa fa-user"></i> {{publicacion.autor.username}} <i class= "fa fa-clock"></i> {{publicacion.fecha_hora_creacion | date:'medium'}} </p>
+          <p>{{publicacion.contenido}}</p>
+        </div>
+        <img src={{publicacion.imagen}} width="75%" height="75%" ng-if="publicacion.imagen">
+        <br>
+        <br>
+    </div> -->
+
+    <div class="post-container" ng-repeat="publicacion in vm.noticiasService.noticias track by $index">
+      <a ng-click="vm.abrirNoticia(publicacion.id, publicacion.titulo)" class="text-dark link-title pointer-link">
+        <h1>{{publicacion.titulo}}</h1>
+      </a>
+      <div class="post-info">
+        <span>Por <i class= "fa fa-user"></i> <span class="username">{{publicacion.autor.username}}</span> <i class= "fa fa-clock"></i> {{publicacion.fecha_hora_creacion | date:'medium'}} </span>
+      </div>
+      <br>
+      <div class="post-content">
+        <div class="image-container" ng-if="publicacion.imagen">
+          <img src="{{publicacion.imagen}}" alt="{{publicacion.titulo}}">
+        </div>
+        <div class="text-link-container">
+          <div class="text-container">
+            <p>{{ publicacion.contenido | limitTo: 250 }}{{publicacion.contenido.length > 250 ? '...' : ''}}</p>
+          </div>
+          <a ng-click="vm.abrirNoticia(publicacion.id, publicacion.titulo)" class="pointer-link"> Haz click aqui para leer más <i class="fa fa-angle-double-right"></i> </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <sidebar on-search-news="vm.buscarNoticias" criterio-busqueda="vm.criterioBusqueda"></sidebar>
+</div>
+<footer-component></footer-component>
